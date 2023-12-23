@@ -1,0 +1,1046 @@
+[
+    {
+        "id": "b5310eec4b1b6b76",
+        "type": "tab",
+        "label": "Wind_Cheaters_Sim",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "36e7c6a06e39e26d",
+        "type": "comment",
+        "z": "b5310eec4b1b6b76",
+        "name": "Device Simulator",
+        "info": "",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "fc02f7cd09de3d65",
+        "type": "comment",
+        "z": "b5310eec4b1b6b76",
+        "name": "server",
+        "info": "",
+        "x": 110,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "921c89668a50b6af",
+        "type": "mqtt in",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "topic": "Air_Velocity_Data",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "8fde701c.6c6c3",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 640,
+        "wires": [
+            [
+                "2f6d71fc0e23c28f",
+                "a88d821a5b14a684"
+            ]
+        ]
+    },
+    {
+        "id": "08c01982b4c2a57d",
+        "type": "mqtt in",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "topic": "IMU_Data",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "8fde701c.6c6c3",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 780,
+        "wires": [
+            [
+                "d5a7aff53c9c4064",
+                "393f94424720fe25"
+            ]
+        ]
+    },
+    {
+        "id": "ee6d0a0f24840dba",
+        "type": "mqtt in",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "topic": "Environmental_Data",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "8fde701c.6c6c3",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 920,
+        "wires": [
+            [
+                "768a4e6dbde4ee34",
+                "a3f2c0259ad12ceb"
+            ]
+        ]
+    },
+    {
+        "id": "2f6d71fc0e23c28f",
+        "type": "function",
+        "z": "b5310eec4b1b6b76",
+        "name": "function 1",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 640,
+        "wires": [
+            [
+                "4a5229c18f24ea01"
+            ]
+        ]
+    },
+    {
+        "id": "d5a7aff53c9c4064",
+        "type": "function",
+        "z": "b5310eec4b1b6b76",
+        "name": "function 2",
+        "func": "\nreturn [msg];",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 780,
+        "wires": [
+            [
+                "9bf97cbeaa777678",
+                "b2711d605063a927",
+                "71dbc59d13cf8cf1"
+            ]
+        ]
+    },
+    {
+        "id": "9bf97cbeaa777678",
+        "type": "ui_gauge",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "group": "3123ec730a1014a2",
+        "order": 1,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Acceleration X:",
+        "label": "g",
+        "format": "{{msg.payload.X}}",
+        "min": "-100",
+        "max": "100",
+        "colors": [
+            "#ff0000",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 680,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "c7d04142cea38fc2",
+        "type": "ui_text",
+        "z": "b5310eec4b1b6b76",
+        "group": "c6d8fc24b00b325f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Temperature",
+        "format": "{{msg.payload.T}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "Arial Black,Arial Black,Gadget,sans-serif",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 830,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "f90ead9aa801090f",
+        "type": "ui_text",
+        "z": "b5310eec4b1b6b76",
+        "group": "c6d8fc24b00b325f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Humidity",
+        "format": "{{msg.payload.H}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "Arial,Arial,Helvetica,sans-serif",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 820,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "5515476974f9c523",
+        "type": "ui_text",
+        "z": "b5310eec4b1b6b76",
+        "group": "c6d8fc24b00b325f",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Pressure",
+        "format": "{{msg.payload.P}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "Arial,Arial,Helvetica,sans-serif",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 820,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "a88d821a5b14a684",
+        "type": "debug",
+        "z": "b5310eec4b1b6b76",
+        "name": "Air Velocity",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "393f94424720fe25",
+        "type": "debug",
+        "z": "b5310eec4b1b6b76",
+        "name": "IMU data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "a3f2c0259ad12ceb",
+        "type": "debug",
+        "z": "b5310eec4b1b6b76",
+        "name": "Environmental Data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "f4f356d7ac331a14",
+        "type": "inject",
+        "z": "b5310eec4b1b6b76",
+        "name": "Automate",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Automate",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 140,
+        "y": 1100,
+        "wires": [
+            [
+                "ab8b4f4df1b5769c"
+            ]
+        ]
+    },
+    {
+        "id": "ab8b4f4df1b5769c",
+        "type": "ui_button",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "group": "db7e463061ea361e",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Automate",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "Automate",
+        "topicType": "msg",
+        "x": 340,
+        "y": 1100,
+        "wires": [
+            [
+                "d78bd86bcb20c59d",
+                "3cd232a1efc3c152"
+            ]
+        ]
+    },
+    {
+        "id": "d78bd86bcb20c59d",
+        "type": "mqtt out",
+        "z": "b5310eec4b1b6b76",
+        "name": "Autmoate",
+        "topic": "Automate",
+        "qos": "1",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8fde701c.6c6c3",
+        "x": 580,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "3cd232a1efc3c152",
+        "type": "debug",
+        "z": "b5310eec4b1b6b76",
+        "name": "Automate",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "260238ce66f57cfe",
+        "type": "inject",
+        "z": "b5310eec4b1b6b76",
+        "name": "Air_Velocity",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Air_Velocity_Data",
+        "payload": "234",
+        "payloadType": "num",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "ecb4f3b0d808907e",
+                "a92d33ed4650a30b"
+            ]
+        ]
+    },
+    {
+        "id": "687e23eabe2884d1",
+        "type": "inject",
+        "z": "b5310eec4b1b6b76",
+        "name": "IMU",
+        "props": [
+            {
+                "p": "X",
+                "v": "23",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "Y",
+                "v": "12",
+                "vt": "str"
+            },
+            {
+                "p": "Z",
+                "v": "8",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "IMU_Data",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "0f759c5618d49974",
+                "199ae1251aa7a99a"
+            ]
+        ]
+    },
+    {
+        "id": "f477cc74905e0c36",
+        "type": "inject",
+        "z": "b5310eec4b1b6b76",
+        "name": "Environemtal",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "Humidity",
+                "v": "50",
+                "vt": "str"
+            },
+            {
+                "p": "Temperature",
+                "v": "45",
+                "vt": "num"
+            },
+            {
+                "p": "Pressure",
+                "v": "59",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Environmental_Data",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "ef8b3e2b5934976e",
+                "de38cd1f660197a7"
+            ]
+        ]
+    },
+    {
+        "id": "ecb4f3b0d808907e",
+        "type": "ui_button",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "group": "739024d57f66b5b9",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Test - Air Velocity",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "234",
+        "payloadType": "num",
+        "topic": "Air_Velocity_Data",
+        "topicType": "msg",
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "5511deeb0e230aa9"
+            ]
+        ]
+    },
+    {
+        "id": "0f759c5618d49974",
+        "type": "ui_button",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "group": "739024d57f66b5b9",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Test - IMU",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"X\":23,\"Y\":18,\"Z\":9}",
+        "payloadType": "json",
+        "topic": "IMU_Data",
+        "topicType": "msg",
+        "x": 370,
+        "y": 260,
+        "wires": [
+            [
+                "0de794549e7c7897"
+            ]
+        ]
+    },
+    {
+        "id": "de38cd1f660197a7",
+        "type": "ui_button",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "group": "739024d57f66b5b9",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Test- Environmental",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"T\":45,\"H\":50,\"P\":59}",
+        "payloadType": "json",
+        "topic": "Environmental_Data",
+        "topicType": "msg",
+        "x": 400,
+        "y": 360,
+        "wires": [
+            [
+                "54397b4e626c7084"
+            ]
+        ]
+    },
+    {
+        "id": "06318eb8e6d099a5",
+        "type": "mqtt out",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "topic": "Environmental_Data",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8fde701c.6c6c3",
+        "x": 800,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "558f6074efaccb25",
+        "type": "mqtt out",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "topic": "IMU_Data",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8fde701c.6c6c3",
+        "x": 720,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "5511deeb0e230aa9",
+        "type": "mqtt out",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "topic": "Air_Velocity_Data",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8fde701c.6c6c3",
+        "x": 670,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "a92d33ed4650a30b",
+        "type": "debug",
+        "z": "b5310eec4b1b6b76",
+        "name": "DS_AirVelocity",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "199ae1251aa7a99a",
+        "type": "debug",
+        "z": "b5310eec4b1b6b76",
+        "name": "DS_IMU",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ef8b3e2b5934976e",
+        "type": "debug",
+        "z": "b5310eec4b1b6b76",
+        "name": "DS_Environmental",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "54397b4e626c7084",
+        "type": "json",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 590,
+        "y": 360,
+        "wires": [
+            [
+                "06318eb8e6d099a5"
+            ]
+        ]
+    },
+    {
+        "id": "768a4e6dbde4ee34",
+        "type": "function",
+        "z": "b5310eec4b1b6b76",
+        "name": "function 3",
+        "func": "return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 920,
+        "wires": [
+            [
+                "c7d04142cea38fc2",
+                "f90ead9aa801090f",
+                "5515476974f9c523"
+            ]
+        ]
+    },
+    {
+        "id": "4a5229c18f24ea01",
+        "type": "ui_level",
+        "z": "b5310eec4b1b6b76",
+        "group": "7439f979.e3ee18",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Air Velocity ",
+        "colorHi": "#e60000",
+        "colorWarn": "#ff9900",
+        "colorNormal": "#00b33c",
+        "colorOff": "#595959",
+        "min": 0,
+        "max": "500",
+        "segWarn": "",
+        "segHigh": "",
+        "unit": "m/s",
+        "layout": "sh",
+        "channelA": "",
+        "channelB": "",
+        "decimals": 0,
+        "animations": "soft",
+        "shape": 2,
+        "colorschema": "fixed",
+        "textoptions": "default",
+        "colorText": "#eeeeee",
+        "fontLabel": "",
+        "fontValue": "",
+        "fontSmall": "",
+        "colorFromTheme": true,
+        "textAnimations": false,
+        "hideValue": false,
+        "tickmode": "off",
+        "peakmode": false,
+        "property": "payload",
+        "peaktime": 3000,
+        "x": 650,
+        "y": 580,
+        "wires": [],
+        "icon": "font-awesome/fa-battery-1"
+    },
+    {
+        "id": "71dbc59d13cf8cf1",
+        "type": "ui_gauge",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "group": "3123ec730a1014a2",
+        "order": 7,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Acceleration Z",
+        "label": "g",
+        "format": "{{msg.payload.Z}}",
+        "min": "-100",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#0000ff",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 680,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "b2711d605063a927",
+        "type": "ui_gauge",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "group": "3123ec730a1014a2",
+        "order": 3,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Acceleration Y",
+        "label": "g",
+        "format": "{{msg.payload.Y}}",
+        "min": "-100",
+        "max": "100",
+        "colors": [
+            "#00ff00",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 680,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "0de794549e7c7897",
+        "type": "json",
+        "z": "b5310eec4b1b6b76",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "558f6074efaccb25"
+            ]
+        ]
+    },
+    {
+        "id": "84f9ea8efc861f43",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "3123ec730a1014a2",
+        "order": 2,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "cc5ea2803e7c18ec",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "3123ec730a1014a2",
+        "order": 4,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "807a1f92726ef878",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "3123ec730a1014a2",
+        "order": 5,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "357b72d5d085f785",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "3123ec730a1014a2",
+        "order": 6,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "e07932086459a122",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "3123ec730a1014a2",
+        "order": 8,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "243252cad7beb059",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "3123ec730a1014a2",
+        "order": 9,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "fe1b1044f45418a5",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "3123ec730a1014a2",
+        "order": 10,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "c35b2bb0f53d1efc",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "3123ec730a1014a2",
+        "order": 11,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "f1e51804041ab301",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "3123ec730a1014a2",
+        "order": 12,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "9fd26cb5cf44a6cf",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "c6d8fc24b00b325f",
+        "order": 2,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "edd66a675ae5cf7c",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "c6d8fc24b00b325f",
+        "order": 4,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "813c3c2b32881c79",
+        "type": "ui_spacer",
+        "z": "b5310eec4b1b6b76",
+        "name": "spacer",
+        "group": "db7e463061ea361e",
+        "order": 1,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "8fde701c.6c6c3",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "compatmode": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "3123ec730a1014a2",
+        "type": "ui_group",
+        "name": "Accelerometer Data ",
+        "tab": "c19ddfcf.06e82",
+        "order": 2,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c6d8fc24b00b325f",
+        "type": "ui_group",
+        "name": "Enviromental Parameters",
+        "tab": "c19ddfcf.06e82",
+        "order": 3,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "db7e463061ea361e",
+        "type": "ui_group",
+        "name": "Automate Feature",
+        "tab": "c19ddfcf.06e82",
+        "order": 4,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "739024d57f66b5b9",
+        "type": "ui_group",
+        "name": "Test Buttons",
+        "tab": "0cf88d8690c3e37f",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7439f979.e3ee18",
+        "type": "ui_group",
+        "name": "Wind Cheaters",
+        "tab": "c19ddfcf.06e82",
+        "order": 1,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c19ddfcf.06e82",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "0cf88d8690c3e37f",
+        "type": "ui_tab",
+        "name": "Simulator",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
